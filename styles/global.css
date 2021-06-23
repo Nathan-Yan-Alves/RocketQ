@@ -13,11 +13,12 @@ html {
     --blue: #3485FF;
     --red: #E83F5B;
     --background: #FBFCFF;
-    --overlay: #040911;
+    --overlay: rgba(4, 9, 17, .8);
     --icons-details: #A5B0C1;
     --dark-grey: #4D5E77;
     --blue-grey: #A1B2CD;
     --light-grey: #E5EAF1;
+    --medium-grey: #EAECF2;
 
     /* The jump of the cat */
     font-size: 62.5%;
@@ -79,7 +80,7 @@ button:hover, .button:hover {
     transition: filter 1.5s;
 }
 
-button > img 
+button > img, 
 .button > img {
     margin-right: 1rem;
     width: 2rem;
@@ -90,6 +91,18 @@ button.outlined,
     background: var(--white);
     color: var(--blue);
     border: .2rem solid var(--blue);
+}
+
+button.red,
+.button.red {
+    background: var(--red);
+    color: var(--white);
+}
+
+button.grey,
+.button.grey {
+    background: var(--light-grey);
+    color: var(--dark-grey);
 }
 
 .content header {
