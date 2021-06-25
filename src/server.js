@@ -19,6 +19,9 @@ server.use(express.static('public'))
 // Especificando para o server aonde está o index.ejs 
 server.set('views', path.join(__dirname, 'views'))
 
+// Pega o conteudo do formulario e decodifica ele para passar para o question-controller
+server.use(express.urlencoded({extended: true}))
+
 // Especificando para o server usar o arquivo route
 server.use(route)
 

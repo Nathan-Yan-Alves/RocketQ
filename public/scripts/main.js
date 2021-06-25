@@ -28,6 +28,19 @@ function handleClick(event, check = true) {
     // Faz com que as tags 'a' não adicione # na url
     event.preventDefault()
 
+    // Verificando se o check é verdadeiro ou falso para atribuir a url
+    const slug = check ? "check" : "delete"
+
+    // Selecionando o ID da sala
+    const roomID = document.querySelector("#room-id").dataset.id
+
+    // Armazenando o ID da pergunta
+    const questionID = event.target.dataset.id
+
+    // Modificando o form action
+    const form = document.querySelector(".modal form")
+    form.setAttribute("action", `/question/${roomID}/${questionID}/${slug}`)
+
     // Modificando as tags de acordo com o check
     modalTitle.innerHTML = check ? 'Marcar como lida esta pergunta' : 'Excluir esta pergunta'
     modalDescription.innerHTML = check ? 'Tem certeza que deseja marcar como lida esta pergunta?' : 'Tem certeza que deseja excluir esta pergunta?'
