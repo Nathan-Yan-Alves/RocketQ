@@ -16,7 +16,8 @@ initDb = {
         CREATE TABLE questions (
             ID INTEGER PRIMARY KEY AUTOINCREMENT,
             description TEXT,
-            read INT
+            read INT,
+            room INT
         )`);
 
         await db.close()
