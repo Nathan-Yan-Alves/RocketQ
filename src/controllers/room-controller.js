@@ -57,15 +57,21 @@ module.exports = {
         res.render('room', {roomID: roomID, questions: questions, questionsRead: questionsRead, isQuestions: isQuestions})
     },
 
-    // Fazer uma verificação para que o usuário entre apenas nas salas que existem
-    enter(req, res) {
-        // const db = await Database()
+    // Faz uma verificação para que o usuário entre apenas nas salas que existem
+    async enter(req, res) {
+        const db = await Database()
         const roomID = req.body.roomID
 
-        // const roomIDs = await db.all(`
-        //     SELECT ID FROM rooms
-        // `)
+        const verifyID = await db.get(`
+            SELECT * FROM rooms WHERE ID = ${roomID} 
+        `)
 
-        res.redirect(`/room/${roomID}`)
+        try {
+            if(verifyID.ID == roomID) {
+                res.redirect(`/room/${roomID}`)
+            }    
+        } catch (e) {
+            res.render('id-incorrect')
+        }
     }
 }
